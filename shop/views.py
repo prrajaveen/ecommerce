@@ -7,7 +7,8 @@ from math import ceil
 # Create your views here.
 def index(request):
     products=Product.objects.all()
-    print(products)
+    # print(type(products))
+    # print(products)
     n=len(products)
     nSlides = n//4 + ceil((n/4)-(n//4))
     # params = {'no_of_slides':nSlides,'range':range(1,nSlides),'product' : products}
@@ -28,12 +29,14 @@ def index(request):
 def about(request):
     return render(request,"shop/about.html")
 def contact(request):
-    return HttpResponse("contact")
+    return render(request,'shop/contact.html')
 def tracker(request):
-    return HttpResponse("tracker")
+    return render(request,"shop/tracker.html")
 def search(request):
-    return HttpResponse("search")
-def productView(request):
-    return HttpResponse("product view")
+    return render(request,'shop/shop.html')
+def productView(request,myid):
+    prod=Product.objects.filter(id=myid)
+    params={'product': prod[0] }
+    return render(request,'shop/prodview.html',params)
 def checkout(request):
-    return HttpResponse("checkout")
+    return render(request,"shop/checkout.html")

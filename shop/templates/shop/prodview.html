@@ -1,0 +1,213 @@
+{%extends 'shop/basic.html' %}
+{%block title%}Product{%endblock%}
+{%block css%}
+<style>
+    .col-5 {
+        /* border: 2px solid red; */
+        display: flex;
+        /* justify-content: center; */
+        /* align-items: center; */
+        top-padding:20px ;
+        flex-direction: column;
+    }
+
+    .rating {}
+
+    .rating p {
+        background-color: green;
+        color: white;
+        padding: 1px 1px;
+        width: fit-content;
+        padding: 2px 6px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+
+    .rating-img {
+        display: inline-block;
+        background-color: yellow;
+        border-radius: 50%;
+        border: 3px solid #2874f0;
+
+    }
+
+    .rating-img img {
+        width: 30px;
+    }
+
+    .assured {
+        background-color: #2874f0;
+        position: relative;
+        padding: 0px 6px;
+        right: 11px;
+        z-index: -1;
+    }
+
+    .numberofrating {
+        opacity: .7;
+    }
+
+    .offers img {
+        width: 50px;
+    }
+
+    .offers p {
+        display: inline-block;
+    }
+
+    .pricebtn button {
+        width: 200px;
+        height: 70px;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        font-family: sans-serif;
+    }
+
+    .pricebtn {
+        display: flex;
+        /* border: 2px solid red; */
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px 20px;
+        position: absolute;
+        bottom: -30px;
+    }
+
+    .pricebtn img {
+        width: 40px;
+
+    }
+
+    .main-image {
+        width: 700px;
+    }
+
+    .section-image {
+        /* padding: 25px 0px; */
+        position: relative;
+    }
+
+    .box {
+        width: 60%;
+        /* border-radius: 20px; */
+    }
+
+    .box .box1 {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0px 20px;
+        background-color: #f5faff;
+    }
+
+    .box .box2 {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0px 20px;
+    }
+
+    .box div {
+        position: relative;
+    }
+
+    .box div h5 {
+        position: absolute;
+        right: 20px;
+    }
+
+    .desc {
+        padding: 10px 10px;
+    }
+</style>
+{%endblock%}
+{%block body%}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-5 section-image border">
+            {%load static%}
+           <div>
+                <img src="/media/{{product.image}}" class="img-fluid  main-image" alt="...">
+            </div>
+            <div class="my-5 pricebtn">
+                <button class="btn btn-primary ">Buy Now</button>
+                <button class="btn btn-primary"><img class="mx-2" src="{%static 'shop/cart.svg'%}" alt="">Add To
+                    card</button>
+            </div>
+
+        </div>
+        <div class="col-7 border desc">
+            <h5>{{product.desc}}</h5>
+
+            <div class="rating">
+                <p>4.2 &#9733</p>
+                <span class="numberofrating">1636 Rating & 186 Reviews</span>
+                <div class="rating-img">
+                    <img src="{%static 'shop/logo.png'%}" alt="">
+                </div>
+                <span class="assured">Assured</span>
+            </div>
+            <h2>&#x20B9 {{product.price}}</h2>
+
+            <div class="offers">
+                <h5>Available offers</h5>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+                <div class="offers">
+                    <img src="{%static 'shop/offers.png'%}" alt="">
+                    <p class="mx-2"><b class="mx-2">Bank Offer</b>5% Unlimited Cashback on Flipkart Axis Bank Credit
+                        Card<a class="mx-2" href="">T&C</a></p>
+                </div>
+
+                <div class="box border">
+                    <div class="box1 border">
+                        <input type="radio" name="raja" id="">
+                        <span class="mx-3">Buy without Exchange</span>
+                        <h5>&#x20B9 {{product.price}}</h5>
+                    </div>
+                    <div class="box2 border">
+                        <input type="radio" name="raja" id="">
+                        <span class="mx-3">Buy with Exchange</span>
+                        <h5><span class="mx-2">up to</span>&#x20B9 {{product.price}}% off</h5>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{%endblock%}
