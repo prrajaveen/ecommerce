@@ -26,7 +26,7 @@
   {% load static %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/shop"><img class="mx-3" src="{%static 'shop/logo.png'%}" alt="">Awsomekart</a>
+      <a class="navbar-brand" href="/shop"><img class="mx-3" src="{%static 'shop/images/logo.png'%}" alt="">Awsomekart</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <button type="button" class="btn btn-secondary mx-3" id="popcard" data-bs-container="body" data-bs-toggle="popover" data-bs-html='true' data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          <img src="{%static 'shop/cart.svg' %}" alt="">
+          <img src="{%static 'shop/images/cart.svg' %}" alt="">
           <span class="mx-1">Cart</span>(<span id="cardItem" class="">0</span>)
         </button>
       </div>
@@ -74,35 +74,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
   crossorigin="anonymous"></script>
-  <script>
-  if(localStorage.getItem('cart')==null){
-    var cart={};
-  }else{
-    cart=JSON.parse(localStorage.getItem('cart'))
-    document.getElementById('cardItem').innerHTML=Object.keys(cart).length
-  }
-  $('.cardbtn').click(function(){
-    console.log('clicked')
-    idstr=this.id.toString()
-    console.log(idstr)
-    if(cart[idstr]!=undefined){
-      cart[idstr]=cart[idstr]+1;
-    }else{
-      cart[idstr]=1
-      
-    }
-    document.getElementById('cardItem').innerHTML=Object.keys(cart).length
-    console.log(cart)
-    localStorage.setItem('cart',JSON.stringify(cart))
-    
-  })
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl)
-  })
-  
-  document.getElementById("popcard").setAttribute('data-bs-content','<h5>Card</h5>')
-  </script>
+<script src="{%static 'shop/js/basic.js'%}"></script>
+
     {% block js %}{% endblock%}
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->

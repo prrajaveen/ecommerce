@@ -101,8 +101,10 @@
             <div class="card-body">
               <h5 class="card-title"> {{i.product_name}} </h5>
               <p class="card-text"> {{i.desc}} </p>
-              <button href="#" id="pr{{i.id}}" class="btn btn-primary cardbtn">Add to cart</button>
-              <a href="/shop/productview/{{i.id}}"><button href="#" id="qv{{i.id}}" class="btn btn-primary cardbtn mx-3">Quick View</button></a> 
+              <span class="plusminus" id=p{{i.id}}>
+              <button href="#" id="pr{{i.id}}" class="btn btn-primary addcard">Add to cart</button>
+            </span>
+              <a href="/shop/productview/{{i.id}}"><button href="#" id="qv{{i.id}}" class="btn btn-primary qvbtn mx-3">Quick View</button></a> 
             </div>
           </div>
         </div>
@@ -135,43 +137,5 @@
 {% endblock %}
 
 {% block js %}
-<script>
-  console.log('hello world');
-$('.card').mouseover(function(){
-  let id=this.id
-  // console.log(id)
-  $('#'+id).addClass("raja")
-});
-
-if(localStorage.getItem('cart')==null){
-  var cart={};
-}else{
-  cart=JSON.parse(localStorage.getItem('cart'))
-  document.getElementById('cardItem').innerHTML=Object.keys(cart).length
-}
-$('.cardbtn').click(function(){
-  console.log('clicked')
-  idstr=this.id.toString()
-  console.log(idstr)
-  if(cart[idstr]!=undefined){
-    cart[idstr]=cart[idstr]+1;
-  }else{
-    cart[idstr]=1
-    
-  }
-  document.getElementById('cardItem').innerHTML=Object.keys(cart).length
-  console.log(cart)
-  localStorage.setItem('cart',JSON.stringify(cart))
-  
-})
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-
-document.getElementById("popcard").setAttribute('data-bs-content','<h5>Card</h5>')
-
-
-
-</script>
+<script src="{%static 'shop/js/index.js'%}"></script>
 {% endblock %}
